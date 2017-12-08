@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet "type="text/css" href="{% static "default_styles.css" %}" />
+    <meta charset="UTF-8">
+    <title>Campaigns Report</title>
+</head>
+<body>
+
+<div>
+    <h1> Resultado de las campañas – Apertura y clics </h1>
+    <pre class="reports">
+El IDBx DMS trabaja directamente con la plataforma MailChimp, que se encarga de enviar
+semanalmente las campañas a los usuarios que cumplan con los requisitos de cada indicador. La ratio de
+apertura y clics ha sido promediada de acuerdo a los resultados de cada campaña, por indicador.
+    </pre>
+    <table class="reports">
+        <thead>
+          <tr>
+            <th class="header">Nombre</th>
+            <th width="40px" class="header">Ratio de apertura</th>
+            <th width="40px" class="header">Ratio de clicks</th>
+            <th width="40px" class="header">Nro de Correos</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for c in campaigns %}
+            <tr class="reports">
+            <td>{{ c.name }}</td>
+            <td>{{ c.open_rate }}</td>
+            <td>{{ c.click_rate }}</td>
+            <td>{{ c.total_sent }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div>
+<h1> Usuarios únicos por indicador</h1>
+<pre class="reports">
+En la siguiente tabla de conversión se indica el progreso de usuarios únicos, desde que fueron
+identificados en las campañas generadas para cada indicador, hasta el momento que han ingresado a la
+plataforma, a lo largo del período de prueba. Adicionalmente, se han identificado aquellos usuarios
+capturados en cada indicador, que lograron una aprobación/certificación al finalizar el curso.
+</pre>
+     <table class="reports">
+        <thead>
+          <tr>
+            <th class="header">Nombre</th>
+            <th width="40px" class="header">Total Usuarios del Curso</th>
+            <th width="40px" class="header">Total Usuarios Inscritos en Campaña</th>
+            <th width="40px" class="header">Usuarios que Abrieron</th>
+            <th width="40px" class="header">Usuarios que hicieron Click</th>
+            <th width="40px" class="header">Usuarios en Campaña que Ingresaron</th>
+            <th width="40px" class="header">Usuarios en Campaña que Aprobaron</th>
+            <th width="40px" class="header">Usuarios en Campaña que se Certificaron</th>
+            <th width="40px" class="header">Usuarios que Ingresaron</th>
+            <th width="40px" class="header">Usuarios que Aprobaron el Curso</th>
+            <th width="40px" class="header">Usuarios que se Certificaron en el Curso</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for c in campaigns %}
+            <tr class="reports">
+            <td>{{ c.name }}</td>
+            <td>{{ c.enrolled_users }}</td>
+            <td>{{ c.total_sent }}</td>
+            <td>{{ c.total_users_opened }}</td>
+            <td>{{ c.total_click }}</td>
+            <td>{{ c.campaign_participants }}</td>
+            <td>{{ c.campaign_approved }}</td>
+            <td>{{ c.campaign_certified }}</td>
+            <td>{{ c.participants }}</td>
+            <td>{{ c.approved }}</td>
+            <td>{{ c.certified }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

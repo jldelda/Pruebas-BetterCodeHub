@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    ports:
+      - '5432:5432'
+
+  django-apache2:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: django-apache2
+    ports:
+      - '8000:80'
+    volumes:
+      - $PWD/www:/var/www/html
+    depends_on:
+      - db

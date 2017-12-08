@@ -1,0 +1,16 @@
+FROM ubuntu:16.04
+ENV PYTHONUNBUFFERED 1
+RUN apt-get update
+RUN apt-get install -y apt-utils vim curl apache2 apache2-utils unzip
+RUN apt-get install -y python-pip libmysqlclient-dev libapache2-mod-wsgi
+RUN apt-get install -y postgresql-client-9.5 mysql-client
+RUN mkdir /code
+WORKDIR /code
+ADD requirements.txt /code/
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+ADD . /code/
+RUN dpkg -i /code/mysql-connector-python_2.1.7-1ubuntu17.04_all.deb
+ADD ./apache_site2.conf /etc/apache2/sites-available/000-default.conf
+EXPOSE 8000 
+CMD ["apache2ctl", "-D", "FOREGROUND"]

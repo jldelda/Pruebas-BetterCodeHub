@@ -1,0 +1,27 @@
+.error { color: red}
+.success {color: green}
+table.reports  {
+    border-color: gray;
+    font-size: large;
+    border: solid;
+    border-collapse: collapse;
+}
+
+tr.reports:hover {
+    background-color: darkgray;
+}
+
+table.reports th {
+    background-color: burlywood ;
+}
+
+table.reports td,th {
+    border: solid;
+    border-collapse: collapse;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+pre.reports {
+    font-size: x-large;
+}

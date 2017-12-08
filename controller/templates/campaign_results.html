@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+    <link rel="stylesheet "type="text/css" href="{% static "default_styles.css" %}" />
+    <meta charset="UTF-8">
+    <title>Campaign generation results</title>
+</head>
+<body>
+<h1>{{ total_campaigns }} Campaign Generators processed</h1>
+{% for campaign,courses in results.items %}
+    {% for course,result in courses.items %}
+        <h2 {% if result|first %} class="error" {% else %} class="success" {% endif %}>
+            {{ campaign }}:{{ course }}: {{ result|last }}<br>{% if result|first %} {{ result|first }} {% endif %}
+        </h2>
+    {% endfor %}
+{% endfor %}
+</body>
+</html>

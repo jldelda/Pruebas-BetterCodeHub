@@ -1,0 +1,5 @@
+FROM library/postgres
+ENV POSTGRES_USER idb
+ENV POSTGRES_PASSWORD idb2017
+ENV POSTGRES_DB default
+

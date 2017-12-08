@@ -1,0 +1,7 @@
+Django>=1.11
+mysqlclient
+psycopg2
+pandas
+requests
+
+

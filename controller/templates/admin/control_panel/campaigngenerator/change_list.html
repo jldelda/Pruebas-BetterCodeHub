@@ -1,0 +1,9 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_static admin_list %}
+{% load admin_urls %}
+{% block content %}
+    {{ block.super }}
+
+    <h2 style="color:red"> Last EDX DB Update: {{ last_update.last_update }} </h2>
+
+{% endblock %}

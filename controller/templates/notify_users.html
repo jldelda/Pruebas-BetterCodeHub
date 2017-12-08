@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notify Users</title>
+</head>
+<body>
+
+<h2> {{ users|length }} Users notified: </h2>
+{% for r in users  %}
+    {{ r }} <br>
+{% endfor %}
+
+</body>
+</html>
